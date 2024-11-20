@@ -3,285 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohit Malik</title>
+    <title>My Portfolio</title>
     <style>
-        /* Reset and Base Styles */
-        * {
+        /* Basic reset for margin and height */
+        body, html {
+            height: 100%;
             margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            font-family: Arial, sans-serif;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
+        /* Full-page background image */
+        .bg-image {
+            background-image: url('C:\Users\scs\Downloads\Untitled design (1).png'); /* Replace with your image URL */
+            background-size: cover; /* Ensures the image covers the entire screen */
+            background-position: center; /* Centers the image */
+            background-repeat: no-repeat; /* Prevents tiling */
+            height: 100%; /* Makes sure it covers the entire height of the screen */
+            position: relative;
         }
 
-        /* Navigation */
-        .navbar {
-            background: #2c3e50;
-            padding: 1rem;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .nav-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
+        /* Content container in the center of the screen */
+        .content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Centers the content both vertically and horizontally */
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for readability */
             color: white;
+            padding: 20px;
+        }
+
+        /* Styling for the name (heading) */
+        .content h1 {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+
+        /* Styling for the brief description (paragraph) */
+        .content p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        /* Styling for the portfolio link (button) */
+        .portfolio-link {
+            display: inline-block;
+            padding: 10px 25px;
+            font-size: 18px;
+            color: white;
+            background-color: #007BFF; /* Blue button color */
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
+            border-radius: 5px; /* Rounded corners */
         }
 
-        .nav-links a:hover {
-            color: #3498db;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.9)), url('/api/placeholder/1920/1080');
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            padding: 2rem;
-        }
-
-        .hero-content h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero-content p {
-            font-size: 1.5rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* Section Styling */
-        section {
-            padding: 5rem 2rem;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-            color: #2c3e50;
-        }
-
-        /* Key Achievements */
-        .achievements {
-            background: #f9f9f9;
-        }
-
-        .achievement-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .achievement-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-
-        .achievement-card:hover {
-            transform: translateY(-5px);
-        }
-
-        /* Projects Section */
-        .projects {
-            background: white;
-        }
-
-        .project-list {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .project-item {
-            margin-bottom: 2rem;
-            padding: 2rem;
-            background: #f9f9f9;
-            border-radius: 10px;
-        }
-
-        /* Skills Section */
-        .skills {
-            background: #2c3e50;
-            color: white;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .skill-category {
-            text-align: center;
-            padding: 2rem;
-        }
-
-        /* Contact Section */
-        .contact {
-            text-align: center;
-            background: #f9f9f9;
-        }
-
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-
-        .btn {
-            background: #2c3e50;
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .btn:hover {
-            background: #3498db;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-
-            .hero-content p {
-                font-size: 1.2rem;
-            }
+        /* Hover effect for the portfolio link */
+        .portfolio-link:hover {
+            background-color: #0056b3; /* Darker blue on hover */
         }
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#achievements">Achievements</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
 
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>MOHIT MALIK</h1>
-            <h1>Development & Community Leadership Professional</h1>
-            <p>Dedicated to sustainable development, community empowerment, and social change through innovative programs and initiatives</p>
-        </div>
-    </section>
+    <!-- Background image container -->
+    <div class="bg-image"></div>
 
-    <section id="achievements" class="achievements">
-        <h2 class="section-title">Key Achievements</h2>
-        <div class="achievement-grid">
-            <div class="achievement-card">
-                <h3>Community Impact</h3>
-                <p>Reached 200,000+ individuals through various health, education, and development initiatives</p>
-            </div>
-            <div class="achievement-card">
-                <h3>Health Initiatives</h3>
-                <p>Organized 25+ annual health camps benefiting 200+ individuals per event</p>
-            </div>
-            <div class="achievement-card">
-                <h3>Environmental Impact</h3>
-                <p>Facilitated plantation of 50,000+ trees and collection of 12,000+ kg plastic waste</p>
-            </div>
-        </div>
-    </section>
+    <!-- Content in the center of the page -->
+    <div class="content">
+        <h1>Mohit Malik</h1> <!-- Replace with your name -->
+        <p>A brief description about yourself. A passionate developer, designer, etc.</p> <!-- Replace with your description -->
+        
+        <!-- Link to portfolio page -->
+        <a href="portfolio.html" class="portfolio-link">View Portfolio</a>
+    </div>
 
-    <section id="projects" class="projects">
-        <h2 class="section-title">Notable Projects</h2>
-        <div class="project-list">
-            <div class="project-item">
-                <h3>COVID-19 Response</h3>
-                <p>Led comprehensive COVID-19 response initiatives including:</p>
-                <ul>
-                    <li>Distribution of 15,000+ masks</li>
-                    <li>Support for 2,500+ migrant workers</li>
-                    <li>Facilitation of vaccination drives</li>
-                </ul>
-            </div>
-            <div class="project-item">
-                <h3>Youth Leadership Development</h3>
-                <p>Established 300+ active youth clubs and trained 250+ rural youth in vocational skills</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="skills" class="skills">
-        <h2 class="section-title">Core Competencies</h2>
-        <div class="skills-grid">
-            <div class="skill-category">
-                <h3>Project Management</h3>
-                <p>Budget Management</p>
-                <p>Strategic Planning</p>
-                <p>Team Leadership</p>
-            </div>
-            <div class="skill-category">
-                <h3>Community Development</h3>
-                <p>Stakeholder Engagement</p>
-                <p>Program Implementation</p>
-                <p>Impact Assessment</p>
-            </div>
-            <div class="skill-category">
-                <h3>Digital Skills</h3>
-                <p>Data Analysis</p>
-                <p>Digital Marketing</p>
-                <p>Process Automation</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="contact">
-        <h2 class="section-title">Get in Touch</h2>
-        <div class="contact-form">
-            <form>
-                <input type="text" placeholder="Name" required>
-                <input type="email" placeholder="Email" required>
-                <textarea placeholder="Message" rows="5" required></textarea>
-                <button type="submit" class="btn">Send Message</button>
-            </form>
-        </div>
-    </section>
 </body>
 </html>
